@@ -1,0 +1,12 @@
+-----definitions------
+LF = Line Feed
+CRLF = Carrige Return Line Feed
+
+
+-----push instructions-----
+git status
+git add . (or filename) 
+git commit -m "message describing changes"
+git  push -u origin main
+
+
