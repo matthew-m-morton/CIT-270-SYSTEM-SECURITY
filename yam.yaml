@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dreamworks
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dreamworks
+  template:
+    metadata:
+      name: dreamworks
+      labels:
+        app: dreamworks
+    spec:
+      containers:
+      - name: dreamworks
+        image: morty12345/cit-270
+        volumeMounts:
+        - name: ssl
+          mountPath: "/usr/src/app/SSL"
+        command: ["npm"]
+        args: ["run", "start"]
+        resources:
+          requests:
+            cpu: .125
+            memory: "500Mi"
+          limits:
+            cpu: .125
+            memory: "600Mi"
+        imagePullPolicy: Always
+      volumes:
+      - name: ssl
+        secret: 
+          secretName: mattssecret
